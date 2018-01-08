@@ -19,6 +19,9 @@ parser.add_argument("--removeonlynumbers", "-N",
                     help="This option is to remove entries with only numbers")
 args = parser.parse_args()
 
+if (len(sys.argv)==1):
+    print("You did not specify any arguments, get help with --help or -h")
+    sys.exit()
 
 # Functions
 def readFromFile(file):
@@ -82,7 +85,8 @@ def main():
     if (args.removedouble):
         Mylist = removeDoubleInList(Mylist)
     if (args.removeonlynumbers):
-        Mylist = removeOnlyNumbers(Mylist)
+        print("This function is not available at the moment, under construction")
+        #Mylist = removeOnlyNumbers(Mylist)
     writeToFile(Myfile, realString(Mylist))
 
         # Execute the stuff
