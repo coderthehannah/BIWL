@@ -26,6 +26,7 @@ parser.add_argument("--removeonlynumbers", "-N",
 parser.add_argument("-sort", "-s",
                     help="Let's your sort by a special algorithm you an choose, get it with \"--sorthelp\"")
 parser.add_argument("--sorthelp", "-SH",
+                    action="store_true",
                     help="Get help about the sort function")
 args = parser.parse_args()
 
