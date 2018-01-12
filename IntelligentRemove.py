@@ -6,6 +6,12 @@ import io
 import argparse
 
 
+# Variables
+
+version="0.1"
+sorts = [""]
+
+
 # Argparse
 
 parser = argparse.ArgumentParser(description="       Tool to remove anyoing and unnecassary passwords form a wordlist \n\n")
@@ -17,6 +23,10 @@ parser.add_argument("--removedouble", "-D",
 parser.add_argument("--removeonlynumbers", "-N",
                     action="store_true",
                     help="This option is to remove entries with only numbers")
+parser.add_argument("-sort", "-s",
+                    help="Let's your sort by a special algorithm you an choose, get it with \"--sorthelp\"")
+parser.add_argument("--sorthelp", "-SH",
+                    help="Get help about the sort function")
 args = parser.parse_args()
 
 if (len(sys.argv)==1):
@@ -75,7 +85,10 @@ def removeOnlyNumbers(listin):
 
 # Maaaaaaaaain
 
-
+def argcheck():
+  if (args.sorthelp):
+    print("[*] Here is the list of possible sorts you can choose right now\n")
+    listPrint(sorts)
 
 
 def main():
@@ -90,6 +103,6 @@ def main():
     writeToFile(Myfile, realString(Mylist))
 
         # Execute the stuff
+argcheck()
 main()
 print("\n[*]   Finished, saved to \"" +  args.file + "\"")
-number = "1"
