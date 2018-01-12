@@ -17,6 +17,10 @@ import argparse
 import io
 import itertools
 from collections import deque
+from colorama import Fore, Back, Style
+
+
+colorama.init()
 
     # If no Input
 if len(sys.argv) == 1:
@@ -123,7 +127,7 @@ def getTemp():
     elif (args.raw!=None):
         temp = args.raw
     else:
-        print("[!] Something went wrong, weird....")
+        print(Fore.RED + "[!] Something went wrong, weird....")
         sys.exit()
     return temp
 
