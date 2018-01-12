@@ -1,4 +1,4 @@
-print("\nDevelopement Version\n\n")
+
 
 
 
@@ -24,7 +24,7 @@ if len(sys.argv) == 1:
     sys.exit()
 
     # Variables
-version ="0.5"
+version ="0.6"
 
     #   Arguments
 parser = argparse.ArgumentParser(description="       Simple tool to make specified wordlists, for example for informaion you got with doxing \n\n")
@@ -56,19 +56,19 @@ args = parser.parse_args()
 
 def errorCheck():
     if args.output==None:
-        print("     You need to specify an output!")
+        print("[i]     You need to specify an output!")
         sys.exit()
     if (args.file!=None) and (args.raw!=None):
-        print("     You can't use file input and raw input at the same time lol")
+        print("[i]     You can't use file input and raw input at the same time.")
         sys.exit()
     if (args.file==None) and (args.raw==None):
-        print("     Please specify either file input or raw input.")
+        print("[i]     Please specify either file input or raw input.")
         sys.exit()
     if args.min==None:
-        print("     No minimum specified, set to 8")
+        print("[*]     No minimum specified, set to 8")
         args.min=8
     if args.max==None:
-        print("     No maximum specified, set to 16")
+        print("[*]     No maximum specified, set to 16")
         args.max=16
 
         # Argument CHecks
@@ -89,10 +89,6 @@ def argumentCheck():
 
     # Funtcions n stuff
 
-
-def checkTime(inp):
-    if len(inp)==0:
-        print("WTF")
 
 
 def  lowercase(inp, list):
@@ -127,7 +123,7 @@ def getTemp():
     elif (args.raw!=None):
         temp = args.raw
     else:
-        print("Something went wrong, weird....")
+        print("[!] Something went wrong, weird....")
         sys.exit()
     return temp
 
@@ -180,12 +176,11 @@ def makeList(listin, file):
 
 def main():
     keywords = argumentCheck()
-    print("\n       Your keywords were:\n")
+    print("\n[*]       Your keywords were:\n")
     listPrint(keywords)
     print("\n")
-    checkTime(keywords)
     makeList(keywords, args.output)
-    print("Done, saved list to " + args.output)
+    print("[*] Done, saved list to " + args.output)
 
 
 errorCheck()
