@@ -1,19 +1,11 @@
-print("\n\n     Developement Edition\n\n")
-
 import sys
 import os
 import io
 import argparse
 
 
-# Variables
-
-version="0.1"
-sorts = [""]
-
-
 # Argparse
-
+version = "0.2"
 parser = argparse.ArgumentParser(description="       Tool to remove anyoing and unnecassary passwords form a wordlist \n\n")
 parser.add_argument("-file", "-f",
                     help="This is an input of keyword from a file, every word should be seperated by a new line")
@@ -23,11 +15,6 @@ parser.add_argument("--removedouble", "-D",
 parser.add_argument("--removeonlynumbers", "-N",
                     action="store_true",
                     help="This option is to remove entries with only numbers")
-parser.add_argument("-sort", "-s",
-                    help="Let's your sort by a special algorithm you an choose, get it with \"--sorthelp\"")
-parser.add_argument("--sorthelp", "-SH",
-                    action="store_true",
-                    help="Get help about the sort function")
 args = parser.parse_args()
 
 if (len(sys.argv)==1):
@@ -71,25 +58,19 @@ def removeDoubleInList(listin):
     return out
 
 def removeOnlyNumbers(listin):
-    is_Number=True
+    is_Number=False
     print("[-] Removing entries with only numbers... ")
     out = []
     round = 0
     for object in listin:
-        print(listin[round])
-        if 0==1:
-            is_Number=False
-        if not (is_Number==True):
+        if not (listin[round].replace("\n", "").isdigit()):
             out.append(realString(listin[round]))
         round+=1
     return out
 
 # Maaaaaaaaain
 
-def argcheck():
-  if (args.sorthelp):
-    print("[*] Here is the list of possible sorts you can choose right now\n")
-    listPrint(sorts)
+
 
 
 def main():
@@ -99,11 +80,10 @@ def main():
     if (args.removedouble):
         Mylist = removeDoubleInList(Mylist)
     if (args.removeonlynumbers):
-        print("This function is not available at the moment, under construction")
-        #Mylist = removeOnlyNumbers(Mylist)
+        Mylist = removeOnlyNumbers(Mylist)
     writeToFile(Myfile, realString(Mylist))
 
         # Execute the stuff
-argcheck()
 main()
 print("\n[*]   Finished, saved to \"" +  args.file + "\"")
+number = "1"
