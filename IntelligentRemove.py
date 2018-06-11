@@ -37,6 +37,8 @@ parser.add_argument("--removelowercase", "-L",
 parser.add_argument("--removestring", "-S",
                     action="store_true",
                     help="Removes all entries with only letters")
+parser.add_argument("-startwith", "-sw",
+                    help="Checks if entry contains the string given behind the \"startwith\" argument")
 
 parser.add_argument("--full", "-F",
                     action="store_true",
@@ -130,6 +132,12 @@ def removeLowerCase(listin):
     return out
 
 
+  
+def startWith(listin):
+  print("[-] Removing entries that don't start with" + args.startswith)
+  return 0
+  
+  
 def removeString(listin):
     print("[-] Removeing entries that consists of strings only...")
     out=[]
@@ -190,7 +198,8 @@ def main():
         Mylist = removeLowerCase(Mylist)
     if (args.removestring or args.full):
         Mylist = removeString(Mylist)
-
+    if (args.startswith!=None):
+      Mylist = checkStart(Mylist)
     if (args.minimum!=None):
         Mylist = checkMin(Mylist)
     if (args.maximum!=None):
